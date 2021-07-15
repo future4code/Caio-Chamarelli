@@ -30,11 +30,15 @@ e parece que tudo que vem no prompt() é recebido como string*/
 
 //Exercício 2
 
-const casaco ="Não"
-const pizza = "Sim"
-const papagaio = "Não"
-console.log(prompt("Você está usando casaco hoje?"), prompt("Você gosta de pizza?"), prompt("Você tem um papagaio de estimação?"))
-
+const primeiraResposta = prompt("Você está usando casaco hoje?")
+console.log(primeiraResposta)
+const segundaResposta = prompt("Você gosta de pizza?")
+console.log(segundaResposta)
+const terceiraResposta = prompt("Você tem um papagaio de estimação?")
+console.log(terceiraResposta)
+console.log("Você está usando casaco hoje?", "-", primeiraResposta)
+console.log("Você gosta de pizza?", "-", segundaResposta)
+console.log("Você tem um papagaio de estimação?", "-", terceiraResposta)
 
 //Exercício 3
 
@@ -57,3 +61,4 @@ let y = d * e
 
 console.log(x)
 console.log(y)
+
