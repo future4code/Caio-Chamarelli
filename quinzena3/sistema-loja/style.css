@@ -1,0 +1,16 @@
+body {
+    background-color:#b8860b;
+}
+
+h1 {
+    text-align: center;
+    margin-left: 200px;
+    margin-right: 200px;
+    background-color:darkorchid;
+}
+
+
+.funcionarios {
+    background-color: darkorchid;
+    border-style: solid black;
+}
