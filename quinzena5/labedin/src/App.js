@@ -2,7 +2,10 @@ import React from 'react';
 import './App.css';
 import CardGrande from './components/CardGrande/CardGrande';
 import ImagemButton from './components/ImagemButton/ImagemButton';
-import {perfil} from './components/Imagem';
+import CardPequeno from './components/CardPequeno/CardPequeno';
+import chama from './components/Imagem/perfil.jpg';
+import email from './components/Imagem/email.jpg'
+import endereco from './components/Imagem/endereco.jpg';
 
 function App() {
   return (
@@ -10,15 +13,28 @@ function App() {
       <div className="page-section-container">
         <h2>Dados pessoais</h2>
         <CardGrande 
-          imagem={perfil}
+          imagem={chama}
           nome="Caio" 
-          descricao="Oi, eu sou o Astrodev. Sou o chefe dos alunos da Labenu. Adoro pedir e-mails na sexta-feira e esperar os alunos responderem só para responder com uma bronca e dar mais trabalho para eles."
+          descricao="Oi, eu sou o Caio Chamarelli. Sou formado em Logística e em Despacho Aduaneiro.
+           Atualmente estou estudando desenvolvimento Frontend na Labenu, com o objetivo de mudar minha área de atuação."
         />
         
         <ImagemButton 
           imagem="https://image.flaticon.com/icons/png/512/117/117472.png" 
           texto="Ver mais"
         />
+      </div>
+      <div>
+        <CardPequeno className= "smallcard-container"
+        imagem={email}
+        email="Email: Chamarex@gmail.com"
+      />
+      </div>
+      <div>
+      <CardPequeno className= "smallcard-container"
+        imagem={endereco}
+      endereco="Endereço: Estrada Langsam"
+      />
       </div>
 
       <div className="page-section-container">
