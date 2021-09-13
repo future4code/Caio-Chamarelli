@@ -7,6 +7,7 @@ import chama from './components/Imagem/perfil.jpg';
 import email from './components/Imagem/email.jpg'
 import endereco from './components/Imagem/endereco.jpg';
 
+
 function App() {
   return (
     <div className="App">
