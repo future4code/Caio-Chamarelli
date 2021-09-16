@@ -7,7 +7,6 @@ import iconeCoracaoBranco from '../../img/favorite-white.svg'
 import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
 import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
-import { findAllByTestId } from '@testing-library/dom'
 
 const PostContainer = styled.div`
   border: 1px solid gray;
@@ -41,7 +40,7 @@ const PostPhoto = styled.img`
   width: 100%;
 `
 
-class Post extends React.Component {
+class Post2 extends React.Component {
   state = {
     curtido: false,
     numeroCurtidas: 0,
@@ -118,4 +117,4 @@ class Post extends React.Component {
   }
 }
 
-export default Post
+export default Post2
