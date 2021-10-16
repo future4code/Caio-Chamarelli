@@ -11,6 +11,9 @@ align-items: center;
 justify-content: space-evenly;
 color: black;
 background-image: url(http://waterbearlearning.com/wp-content/uploads/2019/10/water_bear_learning_video_music3.jpg);
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
 
 button {
     display:flex;
