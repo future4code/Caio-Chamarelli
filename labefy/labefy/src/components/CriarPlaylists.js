@@ -9,29 +9,33 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: space-evenly;
-color: black;
+color: #05df05;
 background-image: url(http://waterbearlearning.com/wp-content/uploads/2019/10/water_bear_learning_video_music3.jpg);
 background-size: cover;
 background-repeat: no-repeat;
 background-position: center;
 
-button {
-    display:flex;
-    margin: auto;
-    margin-top: 40px;
-    padding: 15px;
-    width: 130px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+    button {
+    width: 150px;
+    margin-left: 12px;
     font-size: 15px;
-    flex-direction: column;
     border-radius:15px;
-    border: 1px solid gray;
+    border: 1px solid #05df05;
     height: 40px;
-    background-image: linear-gradient(to left, green, gold, red);
-    color: white;
-}
+    background-image: linear-gradient(to left, black, gold, black);
+    color: black;
+} 
+`
+
+const InputCriar = styled.input`
+ height: 35px;
+ border-radius: 15px;
+ border: 1px solid #05df05;
+ background: rgba(255,247,185,0.5);
+ ::placeholder{
+    color:#05df05;
+    text-align:center;
+ }
 `
 
 const Header = styled.header`
@@ -44,7 +48,8 @@ justify-content: center;
 color: black;
 top:0;
 left: 0;
-background-image: linear-gradient(to left, green, gold, red);
+background-image: linear-gradient(to left, black, gold, black);
+border-bottom: 2px solid #05df05;
 
 img {
     height: 68px;
@@ -52,14 +57,25 @@ img {
 }
 `
 
+
+const DivCriar = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+`
+
+
 const Footer = styled.footer`
 margin-top: -9px;
 text-align: center;
-background-image: linear-gradient(to left, green, gold, red);
+background-image: linear-gradient(to left, black, gold, black);
 color:black;
+border-top: 2px solid #05df05;
 
 `
-
+const Title = styled.h2`
+color: #05df05;
+`
 
 
 export default class CriarPlaylists extends React.Component {
@@ -104,13 +120,16 @@ export default class CriarPlaylists extends React.Component {
 
                 <Main>
                     {/* <img src="/img/Music2.jpg" /> */}
-                    <h2>Bem vindo, Crie sua playlist aqui</h2>
-                    <input
-                        placeholder={"Nome-da-Playlist"}
-                        value={this.state.nome}
-                        onChange={this.handleNome}
-                    />
-                    <button onClick={this.criarPlaylist}>Criar Playlist</button>
+                    <Title>Bem vindo, Crie sua playlist aqui</Title>
+                    <DivCriar>
+                        <InputCriar
+                            placeholder={"Nome-da-Playlist"}
+                            value={this.state.nome}
+                            onChange={this.handleNome}
+                        />
+                        <button onClick={this.criarPlaylist}>Criar Playlist</button>
+                    </DivCriar>
+
                     <button onClick={this.props.irParaLista}>Ir para Lista de Playlist</button>
                 </Main>
                 <Footer>Todos os direitos reservados. Desenvolvido por Caio Chamarelli, Turma Banu, 2021.</Footer>

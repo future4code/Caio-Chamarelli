@@ -12,7 +12,8 @@ justify-content: center;
 color: black;
 top:0;
 left: 0;
-background-image: linear-gradient(to left, green, gold, red);
+background-image: linear-gradient(to left, black, gold, black);
+border-bottom: 2px solid #05df05;
 
 img {
     height: 68px;
@@ -33,51 +34,61 @@ background-repeat: no-repeat;
 background-position: center;
 
 button {
-    display:flex;
-    margin: auto;
-    margin-top: 40px;
-    padding: 15px;
-    width: 130px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+    width: 150px;
+    margin-left: 12px;
     font-size: 15px;
-    flex-direction: column;
     border-radius:15px;
-    border: 1px solid gray;
+    border: 1px solid #05df05;
     height: 40px;
-    background-image: linear-gradient(to left, green, gold, red);
+    background-image: linear-gradient(to left, black, gold, black);
     color: black;
+}
+`
+
+const DivInputsButton = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+height: 20vh;
+width: 80vw;
+`
+
+const Inputs = styled.input`
+border: 1px solid #05df05;
+border-radius: 15px;
+margin-left: 10px;
+background: rgba(255,247,185,0.5);
+::placeholder{
+    color:#05df05;
+    text-align:center
 }
 `
 
 const CardPlaylist = styled.div`
   border: 1px solid #05df05;
   color: black;
-  font-size: 10px;
-  background-image: linear-gradient(to left, green, #30a14a, #05df05);
+  font-size: 15px;
+  border-radius: 15px;
+  /* background-image: linear-gradient(to left, green, #30a14a, #05df05); */
   display: flex;
-  width: 90%;
-  height: 100px;
-  justify-content: space-around;
+  width: 75%;
+  height: 40px;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
   padding: 12px;
   margin-bottom: 20px;
   flex-direction: left;
+  background: rgba(255,247,185,0.5);
+  opacity: 1;
   `
-
-const Input = styled.div`
-display: flex;
-flex-direction: column;
-border: 1px solid black;
-`
 
 const Footer = styled.footer`
 margin-top: -9px;
 text-align: center;
-background-image: linear-gradient(to left, green, gold, red);
+background-image: linear-gradient(to left, black, gold, black);
 color:black;
+border-top: 2px solid #05df05;
 
 `
 
@@ -172,24 +183,31 @@ export default class DetalharPlaylist extends React.Component {
 
                 </Header>
                 <Main>
-                    <input
-                        placeholder="Nome da Música"
-                        value={this.state.nome}
-                        onChange={this.onChangeInputNome}
-                    />
-                    <input
-                        placeholder="Artista"
-                        value={this.state.artista}
-                        onChange={this.onChangeInputArtista}
-                    />
-                    <input
-                        placeholder="URL"
-                        value={this.state.url}
-                        onChange={this.onChangeInputUrl}
-                    />
-                    <button onClick={this.addMusicaPlaylist}>Adicionar</button>
-                    <button onClick={this.props.renderizaPaginaVoltar}>Voltar para lista</button>
+                    <DivInputsButton>
+                        <div>
+                            <Inputs
+                                placeholder="Nome da Música"
+                                value={this.state.nome}
+                                onChange={this.onChangeInputNome}
+                            />
+                            <Inputs
+                                placeholder="Artista"
+                                value={this.state.artista}
+                                onChange={this.onChangeInputArtista}
+                            />
+                            <Inputs
+                                placeholder="URL"
+                                value={this.state.url}
+                                onChange={this.onChangeInputUrl}
+                            />
+                        </div>
+                        <div>
+                            <button onClick={this.addMusicaPlaylist}>Adicionar</button>
+                        </div>
+                    </DivInputsButton>
                     {retornaMusica}
+                    <button onClick={this.props.renderizaPaginaVoltar}>Voltar para lista</button>
+
                 </Main>
                 <Footer>Todos os direitos reservados. Desenvolvido por Caio Chamarelli, Turma Banu, 2021.</Footer>
             </div>
