@@ -2,17 +2,40 @@ import React from 'react'
 import { useHistory } from 'react-router'
 import useForm from '../../hooks/UseForm'
 import { countries } from '../../constants/Countries'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import { BASE_URL } from '../../constants/Url'
 
 const ApplicationFormPage = () => {
 
     const history = useHistory()
+
+    const [trips, setTrips] = useState([])
+
+
+    useEffect(() => {
+        // setIsLoading(true)
+    
+        axios.get(`${BASE_URL}/trips`)
+          .then(response => {
+            // setIsLoading(false)
+            console.log(response.data.trips)
+            setTrips(response.data.trips)
+          })
+          .catch(error => {
+            // setIsLoading(false)
+            // setError(error)
+            console.log(error.message)
+        })
+      }, [])
 
     const { form, onChange, cleanFields } = useForm({
         nome: "",
         idade: "",
         candidatura: "",
         profissao:"",
-        pais:""
+        pais:"",
+        trip:""
       });
 
       const cadastrar = (event) => {
@@ -32,6 +55,21 @@ const ApplicationFormPage = () => {
             <h3>Insceva-se para uma viagem</h3>
 
             <div>
+            <select
+                value={form.trip}
+                required
+                name={"trip"}
+                onChange={onChange}
+            >
+            <option value={""}>Selecione sua viagem:</option>
+                {trips.map((trip) => {
+                    return (
+                        <option value={trip.id} key={trip.id}>
+                            {trip.name} {trip.planet}
+            </option>
+                    );
+                })}
+            </select>
         <form onSubmit={cadastrar}>
             <input
                 name={"nome"}
