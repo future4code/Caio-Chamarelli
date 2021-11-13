@@ -58,7 +58,7 @@ const TelaInicial = (props) => {
 
      const getProfile = () => {
         axios
-        .get(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:caio/person`
+        .get(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/caiom/person`
 
         )
         .then((response) => {
@@ -81,7 +81,7 @@ const TelaInicial = (props) => {
             "choice": true
         }
 
-        axios.post (`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:caio/choose-person`, body)
+        axios.post (`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/caiom/choose-person`, body)
       .then((res) => {
           if(res.data.isMatch){
               alert(`${perfil.name} deu match`)
@@ -101,7 +101,7 @@ const TelaInicial = (props) => {
         }
 
 
-        axios.post (`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:caio/choose-person`, body)
+        axios.post (`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/caiom/choose-person`, body)
       .then((res) => {
           getProfile()
       })

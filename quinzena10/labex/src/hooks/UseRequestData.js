@@ -12,7 +12,7 @@ export default function useRequestData(url) {
     axios.get(url)
       .then(response => {
         setIsLoading(false)
-        setData(response.data)
+        setData(response.data.trips)
       })
       .catch(error => {
         setIsLoading(false)
