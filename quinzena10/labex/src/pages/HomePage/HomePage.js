@@ -10,7 +10,14 @@ const HomePage = () => {
     }
 
     const goToLoginPage = () => {
-        history.push("/login")
+        // history.push("/login")
+        const token = localStorage.getItem('token');
+        if (token === null) {
+            history.push("/login");
+        }
+        else {
+            history.push("/admin/trips/list");
+        };
     }
 
     return (

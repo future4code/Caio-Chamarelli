@@ -3,43 +3,42 @@ import { useHistory } from 'react-router'
 import useForm from '../../hooks/UseForm'
 import { countries } from '../../constants/Countries'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
 import { BASE_URL } from '../../constants/Url'
+import useRequestData from '../../hooks/UseRequestData'
 
 const ApplicationFormPage = () => {
 
     const history = useHistory()
 
-    const [trips, setTrips] = useState([])
-
-
-    useEffect(() => {
-        // setIsLoading(true)
-    
-        axios.get(`${BASE_URL}/trips`)
-          .then(response => {
-            // setIsLoading(false)
-            console.log(response.data.trips)
-            setTrips(response.data.trips)
-          })
-          .catch(error => {
-            // setIsLoading(false)
-            // setError(error)
-            console.log(error.message)
-        })
-      }, [])
+    const [tripsData] = useRequestData(`${BASE_URL}/trips`)
 
     const { form, onChange, cleanFields } = useForm({
-        nome: "",
-        idade: "",
-        candidatura: "",
-        profissao:"",
-        pais:"",
-        trip:""
+        appliedTrip:"",
+        name: "",
+        age: "",
+        applicationText: "",
+        profession:"",
+        country:"",
+        
       });
 
       const cadastrar = (event) => {
         event.preventDefault();
+        const body = {
+            name: form.name,
+            age: form.age,
+            applicationText: form.applicationText,
+            profession: form.profession,
+            country: form.country
+        }
+            axios.post(`${BASE_URL}/trips/${form.appliedTrip}/apply`, body)
+             .then(response => {
+                alert ("Aplicação bem sucedida")
+            })
+            .catch(error => {
+                alert("Ops, algo deu errado!")
+            })
+        
         console.log("Formulário enviado!", form);
         cleanFields();
       };
@@ -55,14 +54,16 @@ const ApplicationFormPage = () => {
             <h3>Insceva-se para uma viagem</h3>
 
             <div>
-            <select
-                value={form.trip}
+        <form onSubmit={cadastrar}>
+
+        <select
+                value={form.appliedTrip}
                 required
-                name={"trip"}
+                name={"appliedTrip"}
                 onChange={onChange}
             >
             <option value={""}>Selecione sua viagem:</option>
-                {trips.map((trip) => {
+                {tripsData?.trips.map((trip) => {
                     return (
                         <option value={trip.id} key={trip.id}>
                             {trip.name} {trip.planet}
@@ -70,41 +71,45 @@ const ApplicationFormPage = () => {
                     );
                 })}
             </select>
-        <form onSubmit={cadastrar}>
+
             <input
-                name={"nome"}
-                value={form.nome}
+                name={"name"}
+                value={form.name}
                 onChange={onChange}
                 placeholder="Nome"
                 required
                 pattern={"^.{3,}"}
                 title={"O nome deve ter no mínimo 3 letras"}
             />
+
             <input
-                name={"idade"}
-                value={form.idade}
+                name={"age"}
+                value={form.age}
                 onChange={onChange}
                 placeholder="Idade"
                 required
                 type={"number"}
                 min={18}
             />
+
             <input
-                name={""}
+                name={"applicationText"}
                 value={form.applicationText}
                 onChange={onChange}
                 placeholder="Candidatura"
                 required
                 type={"text"}
             />
+
             <input
-                name={""}
+                name={"profession"}
                 value={form.profession}
                 onChange={onChange}
                 placeholder="Profissão"
                 required
                 type={"text"}
             />
+
 
             <select
                 value={form.country}
@@ -122,21 +127,12 @@ const ApplicationFormPage = () => {
                 })}
             </select>
 
-
-
-          {/* <input
-            name={""}
-            value={form.country}
-            onChange={onChange}
-            placeholder="País"
-            required
-            type={"country"}
-          /> */}
+            <button>enviar</button>
         </form>
       </div>
 
             <button onClick={goBackToTripList}>voltar</button>
-            <button>enviar</button>
+            
         </div>
     )
 }
