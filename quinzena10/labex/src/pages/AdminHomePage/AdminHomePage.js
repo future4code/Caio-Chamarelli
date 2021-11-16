@@ -1,4 +1,4 @@
-// import React from 'react'
+import React from 'react'
 import { useHistory } from "react-router-dom"
 import useRequestData from "../../hooks/UseRequestData"
 import { BASE_URL } from "../../constants/Url"
