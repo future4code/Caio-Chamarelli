@@ -25,7 +25,7 @@ class App extends React.Component {
       {id: Date.now(), texto: 'Limpar o banheiro', completa: true} 
     ],
       inputValue: '',
-      filtro: "incompletas"
+      filtro: "pendentes"
     }
 
   componentDidUpdate() {
@@ -37,7 +37,7 @@ class App extends React.Component {
   };
 
   onChangeInput = (event) => {
-
+    this.setState({inputValue: event.target.value})
   }
 
   criaTarefa = () => {
